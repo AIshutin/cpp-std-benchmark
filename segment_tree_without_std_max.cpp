@@ -55,7 +55,7 @@ signed main() {
 			T.change(pos, val);
 		} else {
 			cin >> l >> r;
-			cout << T.get(l, r) << endl;
+			cout << T.get(l, r) << '\n';
 		}
 	}
 
