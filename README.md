@@ -1,5 +1,5 @@
 # cpp-std-benchmark
-The benchmark that compares std::max with macros.
+The benchmark that compares std::max with macros if compilig without flags
 
 !! There was a stupid mistake in approach. Results updated !!
 
