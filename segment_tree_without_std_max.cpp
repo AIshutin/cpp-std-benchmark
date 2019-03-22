@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
-
+#define MAX(c, a, b) {c=a;if(a<b)c = b;}
+#define UMAX(a, b) {if(a<b)a=b;}
 using namespace std;
 
 const int N = (1<<21);
@@ -13,8 +14,7 @@ struct SegmentTree {
 		T[pos] = val;
 		pos >>= 1;
 		while (pos) {
-			T[pos] = T[(pos<<1) + 1];
-			if (T[pos] < T[pos<<1]) T[pos] = T[pos<<1];
+			MAX(T[pos], T[(pos<<1) + 1], T[pos<<1]);
 			pos >>= 1;
 		}
 	}
@@ -25,11 +25,12 @@ struct SegmentTree {
 		r += N;
 		while (l <= r) {
 			if (l % 2 == 1) {
-				if (res < T[l]) res = T[l];
+				UMAX(res, T[l]);
+				//if (res < T[l]) res = T[l];
 				l++;
 			}
 			if (r % 2 == 0) {
-				if (res < T[r]) res = T[r];
+				UMAX(res, T[r]);//if (res < T[r]) res = T[r];
 				r--;
 			}
 			l >>= 1;
@@ -54,7 +55,7 @@ signed main() {
 			T.change(pos, val);
 		} else {
 			cin >> l >> r;
-			cout << T.get(l, r) << '\n';
+			cout << T.get(l, r) << endl;
 		}
 	}
 
